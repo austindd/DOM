@@ -137,8 +137,8 @@ document.addEventListener("DOMContentLoaded", function() {
             for (let i = 0; i < listContainer.childNodes.length; i++) {
                 listContainer.childNodes[i].addEventListener("dblclick", function() {
                     console.log("Remove List Item")
-                listContainer.removeChild(listContainer.childNodes[i]);
-                listNumber = listNumber - 1;
+                    listContainer.removeChild(listContainer.childNodes[i]);
+                    listNumber = listNumber - 1;
                 });
             };
 
