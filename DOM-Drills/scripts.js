@@ -42,16 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(headerContainer);
 
     // class names
-    /*
-    document.getElementsByTagName('H1').className = 'h1';
-    console.log(document.getElementsByTagName('H1').className);
-    document.getElementsByTagName('H2').className = 'h2';
-    document.getElementsByTagName('H3').className = 'h3';
-    document.getElementsByTagName('H4').className = 'h3';
-    document.getElementsByTagName('H5').className = 'h4';
-    document.getElementsByTagName('H6').className = 'h5';
-    */
-
     header1.className = 'h1';
     header2.className = 'h2';
     header3.className = 'h3';
@@ -59,5 +49,50 @@ document.addEventListener("DOMContentLoaded", function() {
     header5.className = 'h5';
     header6.className = 'h6';
 
+    let ColorArray = ['coral', 'blue', 'cadetblue', 'darkmagenta', 'green', 'goldenrod', 'mediumvioletred', 'navy'];
+
+
+    // TRYING TO GET FANCY AND FAILING
+    // -------------------------------
+    /*
+    for (let i = 0; i <= headerContainer.childNodes.length; i++) {
+
+        headerContainer.childNodes[i].addEventListener("dblclick", function() {
+            console.log("Header 1 Clicked")
+            headerContainer.childNodes[i].style.color = ColorArray[Math.floor(Math.random() * 8)];
+        })
+    }
+    */
+    // -------------------------------
+
+
+    // DOUBLECLICK HEADER TO CHANGE COLOR
+
+    header1.addEventListener("dblclick", function() {
+        console.log("Header 1 Clicked")
+        header1.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+    header2.addEventListener("dblclick", function() {
+        console.log("Header 2 Clicked")
+        header2.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+    header3.addEventListener("dblclick", function() {
+        console.log("Header 3 Clicked")
+        header3.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+    header4.addEventListener("dblclick", function() {
+        console.log("Header 4 Clicked")
+        header4.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+    header5.addEventListener("dblclick", function() {
+        console.log("Header 5 Clicked")
+        header5.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+    header6.addEventListener("dblclick", function() {
+        console.log("Header 6 Clicked")
+        header6.style.color = ColorArray[Math.floor(Math.random() * 8)];
+    })
+
+    
 
 });
