@@ -91,23 +91,57 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     */
 
-    // BUTTON INSERTS LIST ITEM
-    
-    let listButton = document.getElementsByClassName('list-button');
-    console.log(listButton);
 
-    let listNumber = 0
+
+    
+
+    // BUTTON INSERTS LIST ITEM
+    // Had issues with calling a stand-alone function to create lists.
+    // Had to place the function inside the event listener section for it to work properly.
+
+    let listButton = document.getElementsByClassName('list-button');
+    
+    let listContainer = document.createElement('div');
+    
+    let listNumber = 0      // variable will correspond to list number and concatenate into the list text.
 
     for(let i = 0; i < listButton.length; i++) {
-        listButton[i].addEventListener("click", function () {
+
+        console.log("Button Event Listener Added");
+        listButton[i].addEventListener("click", function(){
+        
             console.log("Create List Item");
+
+            let listItem = document.createElement('li');
+
+            // Creating a string for the list text
             let text = "This is list item ";
             text += listNumber+1;
-            let listItem = document.createElement("li");
             let listItemText = document.createTextNode(text);
+            
             listItem.appendChild(listItemText);
-            document.body.appendChild(listItem);
-            listNumber++;
+            listContainer.appendChild(listItem);
+            document.body.appendChild(listContainer);
+
+            listNumber = listNumber + 1;
+            console.log(listNumber);
+
+            for (let i = 0; i < listContainer.childNodes.length; i++) {
+
+                listContainer.childNodes[i].addEventListener("click", function() {
+                    console.log("List", i+1, "Clicked");
+                    listContainer.childNodes[i].style.color = ColorArray[Math.floor(Math.random() * 8)];
+                });
+            };
+        
+            for (let i = 0; i < listContainer.childNodes.length; i++) {
+                listContainer.childNodes[i].addEventListener("dblclick", function() {
+                    console.log("Remove List Item")
+                listContainer.removeChild(listContainer.childNodes[i]);
+                listNumber = listNumber - 1;
+                });
+            };
+
         });
     };
 
