@@ -52,47 +52,63 @@ document.addEventListener("DOMContentLoaded", function() {
     let ColorArray = ['coral', 'blue', 'cadetblue', 'darkmagenta', 'green', 'goldenrod', 'mediumvioletred', 'navy'];
 
 
-    // TRYING TO GET FANCY AND FAILING
-    // -------------------------------
-    /*
-    for (let i = 0; i <= headerContainer.childNodes.length; i++) {
+    // DOUBLECLICK HEADER TO CHANGE COLOR
+    for (let i = 0; i < headerContainer.childNodes.length; i++) {
 
         headerContainer.childNodes[i].addEventListener("dblclick", function() {
-            console.log("Header 1 Clicked")
+            console.log("Header", i+1, "Clicked");
             headerContainer.childNodes[i].style.color = ColorArray[Math.floor(Math.random() * 8)];
         });
     };
-    */
-    // -------------------------------
 
 
-    // DOUBLECLICK HEADER TO CHANGE COLOR
+    // ALTERNATE SOLUTION (BRUTE FORCE)
 
+    /*
     header1.addEventListener("dblclick", function() {
         console.log("Header 1 Clicked")
         header1.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
     header2.addEventListener("dblclick", function() {
         console.log("Header 2 Clicked")
         header2.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
     header3.addEventListener("dblclick", function() {
         console.log("Header 3 Clicked")
         header3.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
     header4.addEventListener("dblclick", function() {
         console.log("Header 4 Clicked")
         header4.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
     header5.addEventListener("dblclick", function() {
         console.log("Header 5 Clicked")
         header5.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
     header6.addEventListener("dblclick", function() {
         console.log("Header 6 Clicked")
         header6.style.color = ColorArray[Math.floor(Math.random() * 8)];
-    })
+    });
+    */
 
+    // BUTTON INSERTS LIST ITEM
+    
+    let listButton = document.getElementsByClassName('list-button');
+    console.log(listButton);
 
+    let listNumber = 0
+
+    for(let i = 0; i < listButton.length; i++) {
+        listButton[i].addEventListener("click", function () {
+            console.log("Create List Item");
+            let text = "This is list item ";
+            text += listNumber+1;
+            let listItem = document.createElement("li");
+            let listItemText = document.createTextNode(text);
+            listItem.appendChild(listItemText);
+            document.body.appendChild(listItem);
+            listNumber++;
+        });
+    };
 
 });

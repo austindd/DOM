@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(button);
 
     button.addEventListener("click", function() {
+        
         let h1 = document.createElement('h1');
         let h1Text = document.createTextNode("I've been clicked!");
         h1.appendChild(h1Text);
