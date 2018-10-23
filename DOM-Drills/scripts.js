@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function() {
         headerContainer.childNodes[i].addEventListener("dblclick", function() {
             console.log("Header 1 Clicked")
             headerContainer.childNodes[i].style.color = ColorArray[Math.floor(Math.random() * 8)];
-        })
-    }
+        });
+    };
     */
     // -------------------------------
 
@@ -93,6 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
         header6.style.color = ColorArray[Math.floor(Math.random() * 8)];
     })
 
-    
+
 
 });
