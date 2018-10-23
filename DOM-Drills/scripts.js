@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(headerContainer);
 
     // class names
+    /*
     document.getElementsByTagName('H1').className = 'h1';
     console.log(document.getElementsByTagName('H1').className);
     document.getElementsByTagName('H2').className = 'h2';
@@ -49,7 +50,14 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementsByTagName('H4').className = 'h3';
     document.getElementsByTagName('H5').className = 'h4';
     document.getElementsByTagName('H6').className = 'h5';
+    */
 
+    header1.className = 'h1';
+    header2.className = 'h2';
+    header3.className = 'h3';
+    header4.className = 'h4';
+    header5.className = 'h5';
+    header6.className = 'h6';
 
 
 });
