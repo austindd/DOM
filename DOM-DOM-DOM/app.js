@@ -14,28 +14,62 @@ document.addEventListener("DOMContentLoaded", function() {
     squareContainer.style.flexWrap = 'wrap';
     document.body.appendChild(squareContainer);
 
-    let squareCounter = 0; // Starts at 0. +1 when square is added. Used for square ID.
+    let squareCount = 0; // Starts at 0. +1 when square is added. Used for square ID.
+    let squareHtmlIDPrefix = 'square-black-';
+    let squareNumberPrefix = 'Square ';
 
     // Add event listener to button. Anonymous function creates squares.
     btnAddSquare.addEventListener('click', function() {
 
-        squareCounter = squareCounter + 1;
+        squareCount = squareCount + 1;
 
-        let squareBlack = document.createElement('div');
-        squareBlack.style.height = '100px';
-        squareBlack.style.width = '100px';
-        squareBlack.style.backgroundColor = 'black';
-        squareBlack.style.border = '1px solid darkgrey';
-        squareBlack.className = 'square-black';
-        let squareIDPrefix = 'square-black'
-        let squareID = squareIDPrefix += squareCounter; // Concatenating counter to string for square ID.
-        squareBlack.id = squareID;
+        // Create square object.
+        let square = {
+            element: document.createElement('div'),
+            htmlID: squareHtmlIDPrefix += squareCount,
+            number: squareCount,
+            tooltip: {
+                element: document.createElement('div'),
+                text: squareNumberPrefix += squareCount,
+            }
+        };
 
-        squareContainer.appendChild(squareBlack); // Add square to document.
 
+        // Create black square.
+        let squareBlock = document.createElement('div');
+        let squareID = squareIDPrefix += squareCount; // Concat square counter to string for square ID.
+        squareBlock.id = squareID;
+
+        // Style black square.
+        squareBlock.style.height = '100px';
+        squareBlock.style.width = '100px';
+        squareBlock.style.backgroundColor = 'black';
+        squareBlock.style.border = '1px solid darkgrey';
+        squareBlock.className = 'square-black';
+
+        // Add square to document.
+        squareContainer.appendChild(squareBlock);
+
+        // Create tooltip for square.
         let tooltipContainer = document.createElement('div');
+        let tooltipContainerIDPrefix = 'tooltip-container';
+        tooltipContainer.id = tooltipContainerIDPrefix += squareCount; // Concat square counter to string for tooltip container ID.
         tooltipContainer.style.position = 'relative';
-        
+        tooltipContainer.style.display = 'hidden';
+        tooltipContainer.style.backgroundColor = 'lightgrey';
+        tooltipContainer.style.border = '1px solid mediumseagreen';
+
+        // Tooltip text
+        let tooltipTextPrefix = 'Square # ';
+        let tooltipText = tooltipTextPrefix += squareCount;
+
+        // Create Object for each square
+
+        // Add event listener to square for hover text. Anonymous function displays tooltip.
+        squareBlock.addEventListener('mouseover', function(e) {
+            console.log("Mouseover: ", );
+            tooltipContainer.style.display = 'block';
+        });
 
     });
 
