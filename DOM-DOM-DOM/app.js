@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     squareContainer.style.flexWrap = 'wrap';
     document.body.appendChild(squareContainer);
 
-    let squareCounter = 0;  // Starts at 0. +1 when square is added. Used for square ID.
+    let squareCounter = 0; // Starts at 0. +1 when square is added. Used for square ID.
 
     // Add event listener to button. Anonymous function creates squares.
     btnAddSquare.addEventListener('click', function() {
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
         squareBlack.id = squareID;
 
         squareContainer.appendChild(squareBlack); // Add square to document.
+
+        let tooltipContainer = document.createElement('div');
+        tooltipContainer.style.position = 'relative';
+        
+
     });
 
 });
