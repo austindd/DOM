@@ -14,19 +14,23 @@ document.addEventListener("DOMContentLoaded", function() {
     squareContainer.style.flexWrap = 'wrap';
     document.body.appendChild(squareContainer);
 
-    let squareCount = 0; // Starts at 0. +1 when square is added. Used for square ID.
-    let squareHtmlIDPrefix = 'square-black-';
-    let squareNumberPrefix = 'Square ';
+
+    // Defining helper variables here to keep the code cleaner
+    let squareCount = 0;                    // Keeps track of total number of squares in html document.
 
     // Add event listener to button. Anonymous function creates squares.
     btnAddSquare.addEventListener('click', function() {
 
         squareCount = squareCount + 1;
 
-        // Create square object.
+        // Defining helper variables for the function.
+        let squareHtmlIDPrefix = 'square';      // Used for html ID.
+        let tooltipHtmlIDPrefix = 'tooltip';    // Used for html ID.
+        let squareNumberPrefix = 'Square ';     // Used for display text.
+
+        // Create square object template.
         let square = {
             element: document.createElement('div'),
-            htmlID: squareHtmlIDPrefix += squareCount,
             number: squareCount,
             tooltip: {
                 element: document.createElement('div'),
@@ -34,41 +38,46 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         };
 
+        square.element.appendChild(square.tooltip.element);
 
-        // Create black square.
-        let squareBlock = document.createElement('div');
-        let squareID = squareIDPrefix += squareCount; // Concat square counter to string for square ID.
-        squareBlock.id = squareID;
+        console.log(squareCount);
 
-        // Style black square.
-        squareBlock.style.height = '100px';
-        squareBlock.style.width = '100px';
-        squareBlock.style.backgroundColor = 'black';
-        squareBlock.style.border = '1px solid darkgrey';
-        squareBlock.className = 'square-black';
+        // Assign html class and ID to the square and tooltip elements.
+        square.element.className = 'square-black';
+        square.element.id = squareHtmlIDPrefix += squareCount;
+        square.tooltip.className = 'tooltip';
+        square.tooltip.element.id = tooltipHtmlIDPrefix += squareCount;
+
+        // Style square element.
+        square.element.style.height = '100px';
+        square.element.style.width = '100px';
+        square.element.style.backgroundColor = 'black';
+        square.element.style.border = '1px solid darkgrey';
 
         // Add square to document.
-        squareContainer.appendChild(squareBlock);
+        squareContainer.appendChild(square.element);
 
-        // Create tooltip for square.
-        let tooltipContainer = document.createElement('div');
-        let tooltipContainerIDPrefix = 'tooltip-container';
-        tooltipContainer.id = tooltipContainerIDPrefix += squareCount; // Concat square counter to string for tooltip container ID.
-        tooltipContainer.style.position = 'relative';
-        tooltipContainer.style.display = 'hidden';
-        tooltipContainer.style.backgroundColor = 'lightgrey';
-        tooltipContainer.style.border = '1px solid mediumseagreen';
-
-        // Tooltip text
-        let tooltipTextPrefix = 'Square # ';
-        let tooltipText = tooltipTextPrefix += squareCount;
-
-        // Create Object for each square
+        // Style tooltip element.
+        square.tooltip.element.innerHTML = "Test";
+        square.tooltip.element.style.position = 'absolute';
+        square.tooltip.element.style.display = 'none';
+        // square.tooltip.element.style.height = '20px';
+        // square.tooltip.element.style.width = '90 px';
+        // square.tooltip.element.style.backgroundColor = 'lightgrey';
+        square.tooltip.element.style.color = 'white';
+        square.tooltip.element.style.border = '1px solid mediumseagreen';
 
         // Add event listener to square for hover text. Anonymous function displays tooltip.
-        squareBlock.addEventListener('mouseover', function(e) {
-            console.log("Mouseover: ", );
-            tooltipContainer.style.display = 'block';
+        square.element.addEventListener('mouseenter', function(e) {
+            console.log("Mouse Enter: ", square.tooltip.text);
+            square.tooltip.element.style.display = 'inline-block';
+            // square.tooltip.element.style.position = 'absolute';
+        });
+
+        square.element.addEventListener('mouseout', function(e) {
+            console.log("Mouse Out: ", square.tooltip.text);
+            square.tooltip.element.style.display = 'none';
+            // square.tooltip.element.style.position = 'absolute';
         });
 
     });
