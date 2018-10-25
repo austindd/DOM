@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Create button to add squares to screen.
     let btnAddSquare = document.createElement('button');
     let btnAddSquareText = document.createTextNode("Add Square");
-    btnAddSquare.style.margin = '2em';
+    btnAddSquare.style.margin = '3em';
+    btnAddSquare.style.borderRadius = '0.25em';
     btnAddSquare.appendChild(btnAddSquareText);
     document.body.appendChild(btnAddSquare);
 
@@ -21,14 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add event listener to button. Anonymous function creates squares.
     btnAddSquare.addEventListener('click', function() {
 
-        squareCount = squareCount + 1;
+        squareCount = squareCount + 1; // Adding a new square!!!
+
+        
+
 
         // Defining helper variables for the function.
         let squareHtmlIDPrefix = 'square';      // Used for html ID.
         let tooltipHtmlIDPrefix = 'tooltip';    // Used for html ID.
         let squareNumberPrefix = 'Square ';     // Used for display text.
 
-        // Create square object template.
+        // CREATE SQUARE OBJECT WITH HOVER TEXT.
         let square = {
             element: document.createElement('div'),
             number: squareCount,
@@ -48,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         square.tooltip.className = 'tooltip';
         square.tooltip.element.id = tooltipHtmlIDPrefix += squareCount;
 
-        // Style square element.
+        // SQUARE STYLE
         square.element.style.height = '100px';
         square.element.style.width = '100px';
         square.element.style.backgroundColor = 'black';
@@ -57,29 +61,56 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add square to document.
         squareContainer.appendChild(square.element);
 
-        // Style tooltip element.
-        square.tooltip.element.innerHTML = "Test";
+
+        // TOOLTIP STYLE
+        square.tooltip.element.innerHTML = square.tooltip.text;
         square.tooltip.element.style.position = 'absolute';
         square.tooltip.element.style.display = 'none';
-        // square.tooltip.element.style.height = '20px';
-        // square.tooltip.element.style.width = '90 px';
-        // square.tooltip.element.style.backgroundColor = 'lightgrey';
+        square.tooltip.element.style.height = 'fit-content';
+        square.tooltip.element.style.width = 'fit-content';
         square.tooltip.element.style.color = 'white';
-        square.tooltip.element.style.border = '1px solid mediumseagreen';
+        square.tooltip.element.style.border = '2px solid white';
+        square.tooltip.element.style.borderRadius = '.2em';
 
-        // Add event listener to square for hover text. Anonymous function displays tooltip.
-        square.element.addEventListener('mouseenter', function(e) {
-            console.log("Mouse Enter: ", square.tooltip.text);
+        
+        // SQUARE ELEMENT EVENT LISTENERS
+        square.element.addEventListener('mouseover', function(e) {
             square.tooltip.element.style.display = 'inline-block';
-            // square.tooltip.element.style.position = 'absolute';
         });
-
         square.element.addEventListener('mouseout', function(e) {
-            console.log("Mouse Out: ", square.tooltip.text);
             square.tooltip.element.style.display = 'none';
-            // square.tooltip.element.style.position = 'absolute';
         });
+        square.element.addEventListener('click', colorChangeRandom(square.element));
 
-    });
 
-});
+        // TOOLTIP ELEMENT EVENT LISTENERS
+        square.tooltip.element.addEventListener('mouseover', function(e) {
+            square.tooltip.element.style.display = 'inline-block';
+        });
+        square.tooltip.element.addEventListener('mouseout', function(e) {
+            square.tooltip.element.style.display = 'none';
+        });
+        square.tooltip.element.addEventListener('click', colorChangeRandom(square.element));
+
+        // RANDOM COLOR CHANGE FUNCTION
+        function colorChangeRandom(e) {
+            console.log('Begin Color Change');
+            let red1 = Math.floor(Math.random() * 16).toString(16);
+            let red2 = Math.floor(Math.random() * 16).toString(16);
+            let green1 = Math.floor(Math.random() * 16).toString(16);
+            let green2 = Math.floor(Math.random() * 16).toString(16);
+            let blue1 = Math.floor(Math.random() * 16).toString(16);
+            let blue2 = Math.floor(Math.random() * 16).toString(16);
+            let newColor = red1 += red2 += green1 += green2 += blue1 += blue2;
+            e.style.backgroundColor = newColor;
+            console.log('New Color: ', newColor);
+        };
+
+
+
+    }); // END BUTTON CLICK FUNCTION
+
+
+ 
+
+}); // END DOMCONTENTLOADED FUNCTION

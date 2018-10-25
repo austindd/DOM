@@ -33,3 +33,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+let red1 = Math.floor(Math.random() * 16).toString(16);
+let red2 = Math.floor(Math.random() * 16).toString(16);
+let green1 = Math.floor(Math.random() * 16).toString(16);
+let green2 = Math.floor(Math.random() * 16).toString(16);
+let blue1 = Math.floor(Math.random() * 16).toString(16);
+let blue2 = Math.floor(Math.random() * 16).toString(16);
+let newColor = red1 += red2 += green1 += green2 += blue1 += blue2;
+
+console.log(newColor);
+
