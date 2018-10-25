@@ -77,16 +77,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         square.element.addEventListener('dblclick', function () {        // Delete next square if even
             if (square.number % 2 == 0 && square.number != squareCount) {
-                console.log("square.number Clicked: ", square.number);
                 squareContainer.removeChild(this.nextSibling);
                 squareCount = squareCount - 1;
+                console.log('Removed Square: ', square.number + 1);
                 console.log('Square Count: ', squareCount);
     
             };
             if (square.number % 2 == 1 && square.number != 1) {          // Delete previous square if odd
-                console.log("square.number Clicked: ", square.number);
                 squareContainer.removeChild(this.previousSibling);
                 squareCount = squareCount - 1;
+                console.log('Removed Square: ', square.number - 1);
                 console.log('Square Count: ', squareCount);
             };
         });
