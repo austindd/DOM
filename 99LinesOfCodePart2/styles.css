@@ -1,0 +1,22 @@
+body {
+    margin: 1em;
+    background-color: rgb(189, 230, 206);
+}
+#PageTitle {
+    display: block;
+    text-align: center;
+    margin: 1em auto;
+    color: rgb(35, 101, 134);
+    
+
+}
+.Friend {
+    padding: 0.5em 1em 0.5em 1em;
+    background-color: rgb(247, 255, 173);
+    border: 1px solid rgb(247, 255, 173);
+    border-radius: 1.5em;
+}
+h3 {
+    color: rgb(35, 101, 134);
+    text-transform: uppercase;
+}
