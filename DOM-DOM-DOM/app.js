@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
             
         // RANDOM COLOR CHANGE FUNCTION
         function colorChangeRandom(e) {
-            console.log('Begin Color Change');
             let poundSign = '#'
             let red1 = Math.floor(Math.random() * 16).toString(16);
             let red2 = Math.floor(Math.random() * 16).toString(16);
@@ -112,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let newColor = poundSign += red1 += red2 += green1 += green2 += blue1 += blue2;
             square.element.style.backgroundColor = newColor;
             console.log('New Color: ', newColor);
-            console.log(e);
         };
 
     }); // END BUTTON CLICK FUNCTION
